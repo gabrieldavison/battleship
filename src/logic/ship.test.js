@@ -10,9 +10,9 @@ test('returns ship length', () => {
   expect(newShip.length).toBe(5)
 })
 
-test('returns empty hits array with array.length equal to ship.length', () => {
+test('ship hits = 0', () => {
   const newShip = new Ship(5);
-  expect(newShip.hits.length).toBe(newShip.length)
+  expect(newShip.hits).toBe(0)
 })
 
 test('returns sunk as false', () => {
@@ -20,13 +20,13 @@ test('returns sunk as false', () => {
   expect(newShip.sunk).toBe(false)
 })
 
-test('hit() marks corresponding array item with x', () => {
+test('hit() increments hit count', () => {
   const newShip = new Ship(5);
-  newShip.hit(2);
-  expect(newShip.hits[2]).toBe('x');
+  newShip.hit();
+  expect(newShip.hits).toBe(1);
 })
 
-test('isSunk() assigns ship.sunk to true if all hits are x', () => {
+test('isSunk() assigns ship.sunk hits = length', () => {
   const newShip = new Ship(3);
   newShip.hit(0);
   newShip.hit(1);
@@ -35,7 +35,7 @@ test('isSunk() assigns ship.sunk to true if all hits are x', () => {
   expect(newShip.sunk).toBe(true)
 })
 
-test('isSunk() doesnt reassign ship.sunk if not all hits are x', () => {
+test('isSunk() doesnt reassign ship.sunk if hits < length', () => {
   const newShip = new Ship(3);
   newShip.hit(0);
   newShip.hit(1);
