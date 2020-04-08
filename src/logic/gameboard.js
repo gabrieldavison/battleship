@@ -25,8 +25,6 @@ class Gameboard {
       return 'ship too big'
     }
 
-   
-
     //adds new ship to ship array
     this.ships.push(newShip)
     //populates board array with ship value if placed horizontally
@@ -37,8 +35,10 @@ class Gameboard {
     }
     //populates board array with ship value if placed vertically
     if (orientation === 'v') {
-      for (let i=0; i < newShip.length; i+=10) {
-        this.board[coordToIndex(x, y) + i] = {id: this.ships.indexOf(newShip), hit: ''}
+      let increment = 0
+      for (let i=0; i < newShip.length; i+=1) {
+        this.board[coordToIndex(x, y) + increment] = {id: this.ships.indexOf(newShip), hit: ''}
+        increment += 10
       }
     }
     

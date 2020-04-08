@@ -23,7 +23,7 @@ class Player {
     board.recieveAttack(x,y);
   }
   // takes function to return random coord as a parameter
-  randomTurn(board, depRandomCoord) {
+  randomTurn(board, depRandomCoord = random) {
     let coord = [depRandomCoord(), depRandomCoord()]
     // wont play the same coord twice
     while(!isLegal(board, coord)) {
