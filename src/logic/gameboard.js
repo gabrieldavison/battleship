@@ -9,7 +9,7 @@ class Gameboard {
   constructor() {
       this.board = []
       for(let i = 0; i < 100; i++) {
-        this.board.push({id: undefined, hits: ''})
+        this.board.push({id: undefined, hits: '', index: i})
       }
       this.ships = [];
   }
