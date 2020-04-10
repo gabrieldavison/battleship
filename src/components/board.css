@@ -8,3 +8,7 @@ td {
   width: 20px;
   height: 20px;
 }
+
+.ship {
+  border-color: red;
+}
