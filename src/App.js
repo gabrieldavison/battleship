@@ -11,6 +11,7 @@ class App extends React.Component {
       board2: [],
     }
     this.handleNewGame = this.handleNewGame.bind(this)
+    this.handleTakeTurn = this.handleTakeTurn.bind(this)
   }
   handleNewGame() {
     newGame()
@@ -19,7 +20,17 @@ class App extends React.Component {
       board2: player2.gameboard.board,
     })
     console.log(this.state.board1)
+    
   }
+  handleTakeTurn(e) {
+    console.log(e.target.dataset.index)
+    takeTurn(e.target.dataset.index)
+    this.setState({
+      
+      board2: player2.gameboard.board,
+    })
+  }
+
   
 
   render() {
@@ -28,7 +39,7 @@ class App extends React.Component {
       <button onClick={this.handleNewGame}>New Game</button>
 
       <Board board={this.state.board1}/>
-      <Board board={this.state.board2} player={'cpu'} takeTurn ={takeTurn}/>
+      <Board board={this.state.board2} player={'cpu'} takeTurn={this.handleTakeTurn}/>
       </div>
     )
   }

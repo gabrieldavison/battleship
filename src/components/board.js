@@ -5,6 +5,12 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.createTable = this.createTable.bind(this)
+    this.handleTakeTurn = this.handleTakeTurn.bind(this)
+
+  }
+
+  handleTakeTurn(e) {
+    this.props.takeTurn(e);
   }
  
   createTable() {
@@ -16,10 +22,11 @@ class Board extends React.Component {
       boardI+=10
       table.push(row.map((item, index) => {
         return <td key={row.indexOf(item)}
-                  data-index={item.index}>
+                  data-index={item.index}
+                  onClick={this.handleTakeTurn}
+                  >
                   {this.props.player === 'cpu' ? 
                     item.hit : item.id}
-                   
                 </td>})) 
     }
     return table.map((row, index) => <tr key={index}>{row}</tr>)

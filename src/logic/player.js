@@ -1,14 +1,14 @@
 import {Gameboard, coordToIndex} from './gameboard'
 
 function randomCoord() {
-  return Math.floor(Math.random() * (9 +1))
+  return Math.floor(Math.random() * (99 +1))
 }
 let random = randomCoord
 
 function isLegal(board, coord) {
   if (
-    board.board[coordToIndex(coord[0],coord[1])].hits === 'o'
-    || board.board[coordToIndex(coord[0],coord[1])].hits === 'x'
+    board.board[coord].hit === 'o'
+    || board.board[coord].hit === 'x'
    ) {return false}
   return true
 }
@@ -19,18 +19,19 @@ class Player {
     this.turns = []
   }
 
-  takeTurn(x,y, board) {
-    board.recieveAttack(x,y);
+  takeTurn(index, board) {
+    board.recieveAttack(index);
   }
   // takes function to return random coord as a parameter
   randomTurn(board, depRandomCoord = random) {
-    let coord = [depRandomCoord(), depRandomCoord()]
+    let coord = depRandomCoord()
+ 
     // wont play the same coord twice
     while(!isLegal(board, coord)) {
-      coord = [depRandomCoord(), depRandomCoord()]
+      coord = depRandomCoord()
     }
     this.turns.push(coord)
-    board.recieveAttack(coord[0], coord[1])
+    board.recieveAttack(coord)
   }
 }
 

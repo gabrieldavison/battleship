@@ -9,7 +9,7 @@ class Gameboard {
   constructor() {
       this.board = []
       for(let i = 0; i < 100; i++) {
-        this.board.push({id: undefined, hits: '', index: i})
+        this.board.push({id: undefined, hit: '', index: i})
       }
       this.ships = [];
   }
@@ -30,27 +30,29 @@ class Gameboard {
     //populates board array with ship value if placed horizontally
     if(orientation === 'h') {
       for (let i=0; i < newShip.length; i++) {
-        this.board[coordToIndex(x, y) + i] = {id: this.ships.indexOf(newShip), hit: ''}
+        this.board[coordToIndex(x, y) + i].id = this.ships.indexOf(newShip)
+        this.board[coordToIndex(x, y) + i].hit = ''
       }
     }
     //populates board array with ship value if placed vertically
     if (orientation === 'v') {
       let increment = 0
       for (let i=0; i < newShip.length; i+=1) {
-        this.board[coordToIndex(x, y) + increment] = {id: this.ships.indexOf(newShip), hit: ''}
+        this.board[coordToIndex(x, y) + increment].id = this.ships.indexOf(newShip)
+        this.board[coordToIndex(x, y) + increment].hit = ''
         increment += 10
       }
     }
     
   }
   
-  recieveAttack(x,y) {
-    let boardIndex = coordToIndex(x,y);
+  recieveAttack(boardIndex) {
+    
 
     if(this.board[boardIndex].id === undefined) {
-      this.board[boardIndex].hits ='o'
+      this.board[boardIndex].hit ='o'
     }else if(!(this.board[boardIndex].id === undefined)) {
-      this.board[boardIndex].hits = 'x'
+      this.board[boardIndex].hit = 'x'
       this.ships[this.board[boardIndex].id].hit();
       this.ships[this.board[boardIndex].id].isSunk();
     } 
