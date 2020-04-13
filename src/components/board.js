@@ -1,6 +1,5 @@
 import React from 'react'
 import './board.css'
-import { takeTurn } from '../logic/game';
 class Board extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +9,9 @@ class Board extends React.Component {
   }
 
   handleTakeTurn(e) {
+    if(this.props.player !== 'cpu') {
+      return
+    }
     this.props.takeTurn(e);
   }
  
@@ -26,10 +28,7 @@ class Board extends React.Component {
                   key={row.indexOf(item)}
                   data-index={item.index}
                   //handle turn only works on cpu board
-                  onClick={ this.props.player === 'cpu'
-                    ? this.handleTakeTurn
-                    : ''
-                  }
+                  onClick={this.handleTakeTurn}
                   //outlines player ships in red
                   className={(this.props.player !== 'cpu' && item.id !== undefined) ? 'ship' : ''}
                 >

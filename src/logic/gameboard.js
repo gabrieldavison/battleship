@@ -1,10 +1,6 @@
 import {Ship} from './ship'
 
-//converts xy coordinates to correspondinh index in gameboard array
-function coordToIndex(x,y) {
-  let numStr = y.toString() + x.toString();
-  return parseInt(numStr)
-}
+
 class Gameboard {
   constructor() {
       this.board = []
@@ -14,13 +10,14 @@ class Gameboard {
       this.ships = [];
   }
 
-  placeShip(length, x, y, orientation) {
+  placeShip(length, index, orientation) {
     let newShip = new Ship(length) 
-
+    let y = Number.parseInt(index.toString()[0])
+    index = Number.parseInt(index)
     // returns error message if ship is too big to be placed on board
     if (
-        (orientation === 'h' && (coordToIndex(x,y)- y*10) + newShip.length > 9) 
-        || (orientation === 'v' && (coordToIndex(x,y) + newShip.length*10 > 99 ))
+        (orientation === 'h' && (index- y*10) + newShip.length > 9) 
+        || (orientation === 'v' && (index + newShip.length*10 > 99 ))
       ){
       return 'ship too big'
     }
@@ -28,18 +25,21 @@ class Gameboard {
     //adds new ship to ship array
     this.ships.push(newShip)
     //populates board array with ship value if placed horizontally
+
     if(orientation === 'h') {
-      for (let i=0; i < newShip.length; i++) {
-        this.board[coordToIndex(x, y) + i].id = this.ships.indexOf(newShip)
-        this.board[coordToIndex(x, y) + i].hit = ''
+      for (let i = 0; i < newShip.length; i++) {
+
+        this.board[index + i].id = this.ships.indexOf(newShip)
+        this.board[index + i].hit = ''
       }
     }
     //populates board array with ship value if placed vertically
     if (orientation === 'v') {
       let increment = 0
       for (let i=0; i < newShip.length; i+=1) {
-        this.board[coordToIndex(x, y) + increment].id = this.ships.indexOf(newShip)
-        this.board[coordToIndex(x, y) + increment].hit = ''
+
+        this.board[index + increment].id = this.ships.indexOf(newShip)
+        this.board[index + increment].hit = ''
         increment += 10
       }
     }
@@ -47,7 +47,6 @@ class Gameboard {
   }
   
   recieveAttack(boardIndex) {
-    
 
     if(this.board[boardIndex].id === undefined) {
       this.board[boardIndex].hit ='o'
@@ -62,4 +61,4 @@ class Gameboard {
   }
 }
 
-export {Gameboard, coordToIndex}
+export {Gameboard}

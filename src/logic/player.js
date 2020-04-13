@@ -1,4 +1,4 @@
-import {Gameboard, coordToIndex} from './gameboard'
+import {Gameboard} from './gameboard'
 
 function randomCoord() {
   return Math.floor(Math.random() * (99 +1))
@@ -20,6 +20,10 @@ class Player {
   }
 
   takeTurn(index, board) {
+    if(!isLegal(board, index)) {
+      return false
+    }
+    this.turns.push(index)
     board.recieveAttack(index);
   }
   // takes function to return random coord as a parameter
