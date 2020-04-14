@@ -19,13 +19,14 @@ class PlaceShip extends React.Component {
     this.changeOrientation = this.changeOrientation.bind(this); 
     this.changeLength = this.changeLength.bind(this); 
     this.placeShip = this.placeShip.bind(this);
+    this.handleResetBoard = this.handleResetBoard.bind(this)
   }
   placeShip(index) {
+    //returns statement if ship cant be placed to stop ship state being changed to placed
     if(player1.gameboard.placeShip(this.state.shipLength, index, this.state.shipOrientation) === false) { 
       this.props.updateBoard();
       return
     }
-    // player1.gameboard.placeShip(this.state.shipLength, index, this.state.shipOrientation)
 
     // sets individual ships to placed 
     switch (this.state.shipLength) {
@@ -53,6 +54,19 @@ class PlaceShip extends React.Component {
   changeOrientation(orientation) {
     this.setState({shipOrientation: orientation})
   }
+
+  handleResetBoard() {
+    this.setState({
+      shipLength: 5,
+      shipOrientation: 'v',
+      boat5Placed: 'notPlaced',
+      boat4Placed: 'notPlaced',
+      boat3Placed1: 'notPlaced',
+      boat3Placed2: 'notPlaced',
+      boat2Placed: 'notPlaced',
+    })
+    this.props.newGame()
+  }
   render() {
     return(
       <div>
@@ -68,7 +82,15 @@ class PlaceShip extends React.Component {
           boat3Placed2={this.state.boat3Placed2}
           boat2Placed={this.state.boat2Placed}
         />
-        <SetupBoard board={this.props.board} placeShip={this.placeShip} />
+        <SetupBoard board={this.props.board} 
+          placeShip={this.placeShip} 
+          resetBoard={this.handleResetBoard}
+          boat5Placed={this.state.boat5Placed}
+          boat4Placed={this.state.boat4Placed}
+          boat3Placed1={this.state.boat3Placed1}
+          boat3Placed2={this.state.boat3Placed2}
+          boat2Placed={this.state.boat2Placed}
+        />
       </div>
     )
   }

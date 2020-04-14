@@ -1,7 +1,7 @@
 import React from 'react';
 import PlaceShip from './components/PlaceShip'
 import Board from './components/board'
-import {newGame} from './logic/game'
+import {newGame, startGame} from './logic/game'
 import {player1, player2, takeTurn, winner} from './logic/game'
 class App extends React.Component {
 
@@ -13,6 +13,7 @@ class App extends React.Component {
       winner: undefined,
       message: '',
       placeShip: false,
+      gameBoard: false,
     }
     this.handleNewGame = this.handleNewGame.bind(this)
     this.handleTakeTurn = this.handleTakeTurn.bind(this)
@@ -26,13 +27,17 @@ class App extends React.Component {
     })
   }
   handleNewGame() {
-    console.log(this.state.board1)
-    newGame()
-    
+    newGame()   
     this.setState({
-      board1: player1.gameboard.board ,
+      board1: player1.gameboard.board,
       board2: player2.gameboard.board,
       placeShip: true
+    })
+  }
+  handleStartGame() {
+    this.setState({
+      placeShip: false,
+      gameBoard: true
     })
   }
 
@@ -59,14 +64,17 @@ class App extends React.Component {
       <div>
       <button onClick={this.handleNewGame}>New Game</button>
       {this.state.placeShip 
-      ? <PlaceShip board={this.state.board1} updateBoard={this.updateBoard} /> 
+      ? <PlaceShip board={this.state.board1} 
+          updateBoard={this.updateBoard} 
+          newGame={this.handleNewGame}
+        /> 
       : null}
-        {!this.state.placeShip 
+      {this.state.gameBoard 
         ? <div>
-          <Board board={this.state.board1}/>
-          <Board board={this.state.board2} player={'cpu'} takeTurn={this.handleTakeTurn}/>
-          <p>{this.state.message}</p>
-        </div>
+            <Board board={this.state.board1}/>
+            <Board board={this.state.board2} player={'cpu'} takeTurn={this.handleTakeTurn}/>
+            <p>{this.state.message}</p>
+          </div>
         : null}
       </div>
     )

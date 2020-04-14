@@ -1,6 +1,17 @@
 import {Ship} from './ship'
 
-
+function checkOverlap(length, index, orientation, board) {
+  if(orientation === 'h') {
+    for(let i = 0; i < length; i+=1) {
+      if(board[index + i].id !== undefined) {return false}
+    }
+  }
+  if(orientation === 'v') {
+    for(let i = 0; i < length; i+=1) {
+      if(board[index + (i*10)].id !== undefined) {return false}
+    }
+  }
+}
 class Gameboard {
   constructor() {
       this.board = []
@@ -17,12 +28,13 @@ class Gameboard {
     // returns error message if ship is too big to be placed on board
     if (
         ((orientation === 'h' && (index- y*10) + newShip.length > 10) || (orientation === 'h' && index <= 9 && index + newShip.length > 10) ) 
-        || (orientation === 'v' && (index + newShip.length*10 > 99 ))
+        || (orientation === 'v' && (index + newShip.length*10 > 109 ))
       ){
         console.log('too many ships')
       return false
     }
 
+    //limits the number of each ship placed
     if (
         ((newShip.length === 4 
         || newShip.length === 5
@@ -33,6 +45,11 @@ class Gameboard {
         console.log('too many ships')
         return false
       }
+    
+    //checks to make sure ship doesnt overlap with another
+    if(checkOverlap(length, index, orientation, this.board) === false) {
+      return false
+    }
     
     //adds new ship to ship array
     this.ships.push(newShip)
@@ -56,7 +73,13 @@ class Gameboard {
     }
     
   }
-  
+  placeRandom(length) {
+    let orientation = Math.random() < 0.5 ? 'v' : 'h'
+    let index = Math.floor(Math.random() * 99);
+    if (this.placeShip(length, index, orientation) === false) {
+      this.placeRandom(length)
+    }
+  }
   recieveAttack(boardIndex) {
 
     if(this.board[boardIndex].id === undefined) {

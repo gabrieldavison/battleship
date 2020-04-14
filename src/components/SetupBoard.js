@@ -33,6 +33,16 @@ class SetupBoard extends React.Component {
     }
     return table.map((row, index) => <tr key={index}>{row}</tr>)
    }
+
+   startButton() {
+     if (
+       this.props.boat5Placed === 'placed'
+       && this.props.boat4Placed === 'placed'
+       && this.props.boat3Placed1 === 'placed'
+       && this.props.boat3Placed2 === 'placed'
+       && this.props.boat2Placed === 'placed'
+     ) return true
+   }
   render() {
     return(
       <div>
@@ -42,6 +52,9 @@ class SetupBoard extends React.Component {
             {this.createTable()}
           </tbody>
         </table>
+        <button onClick={this.props.resetBoard}>Reset Board</button>
+
+        {this.startButton() ? <button>Start Game</button>: null}
       </div>
     )
   }

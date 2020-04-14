@@ -24,12 +24,14 @@ function takeTurn(index) {
 function newGame() {
   player1 = new Player();
   player2 = new Player();
-  // populateBoard(player1)
-  // populateBoard(player2)
+}
 
+function startGame() {
+  populateBoard()
+  console.log(player2.gameboard.board)
 }
 
 
 
 
-export {newGame, player1, player2, takeTurn, winner}
+export {newGame, player1, player2, takeTurn, winner, startGame}

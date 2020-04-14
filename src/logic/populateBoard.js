@@ -1,10 +1,12 @@
+import { player2 } from "./game"
 
-function populateBoard(player) {
-  player.gameboard.placeShip(5, 11, 'v');
-  player.gameboard.placeShip(4, 9, 'v');
-  player.gameboard.placeShip(3, 23, 'h');
-  player.gameboard.placeShip(3, 36, 'v');
-  player.gameboard.placeShip(2, 84, 'h');
+function populateBoard() {
+  player2.gameboard.placeRandom(5)
+  player2.gameboard.placeRandom(4)
+  player2.gameboard.placeRandom(3)
+  player2.gameboard.placeRandom(3)
+  player2.gameboard.placeRandom(2)
+
 }
 
 export {populateBoard}
