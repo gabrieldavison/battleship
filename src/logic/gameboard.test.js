@@ -55,7 +55,7 @@ describe('tests recieveAttack', () => {
   })
 
   test('revieveAttack adds hit on ship in ship array', () => {
-    newBoard.placeShip(3, 54 , 'h');
+    newBoard.placeShip(4, 54 , 'h');
     newBoard.recieveAttack(55)
     expect(newBoard.ships[newBoard.board[55].id].hits).toBe(1)
   })

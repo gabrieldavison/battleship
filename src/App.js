@@ -16,6 +16,14 @@ class App extends React.Component {
     }
     this.handleNewGame = this.handleNewGame.bind(this)
     this.handleTakeTurn = this.handleTakeTurn.bind(this)
+    this.updateBoard = this.updateBoard.bind(this)
+
+  }
+  updateBoard() {
+    this.setState({
+      board1: player1.gameboard.board,
+      board2: player2.gameboard.board,
+    })
   }
   handleNewGame() {
     console.log(this.state.board1)
@@ -51,7 +59,7 @@ class App extends React.Component {
       <div>
       <button onClick={this.handleNewGame}>New Game</button>
       {this.state.placeShip 
-      ? <PlaceShip board={this.state.board1} /> 
+      ? <PlaceShip board={this.state.board1} updateBoard={this.updateBoard} /> 
       : null}
         {!this.state.placeShip 
         ? <div>

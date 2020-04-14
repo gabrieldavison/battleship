@@ -16,19 +16,30 @@ class Gameboard {
     index = Number.parseInt(index)
     // returns error message if ship is too big to be placed on board
     if (
-        (orientation === 'h' && (index- y*10) + newShip.length > 9) 
+        ((orientation === 'h' && (index- y*10) + newShip.length > 10) || (orientation === 'h' && index <= 9 && index + newShip.length > 10) ) 
         || (orientation === 'v' && (index + newShip.length*10 > 99 ))
       ){
-      return 'ship too big'
+        console.log('too many ships')
+      return false
     }
 
+    if (
+        ((newShip.length === 4 
+        || newShip.length === 5
+        || newShip.length === 2)
+        && this.ships.filter(item => item.length === newShip.length).length > 0)
+        || (newShip.length === 3 && this.ships.filter(item => item.length === newShip.length).length > 1)
+      ) {
+        console.log('too many ships')
+        return false
+      }
+    
     //adds new ship to ship array
     this.ships.push(newShip)
     //populates board array with ship value if placed horizontally
 
     if(orientation === 'h') {
       for (let i = 0; i < newShip.length; i++) {
-
         this.board[index + i].id = this.ships.indexOf(newShip)
         this.board[index + i].hit = ''
       }
