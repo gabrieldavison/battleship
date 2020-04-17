@@ -55,7 +55,6 @@ class App extends React.Component {
   }
 
   handleTakeTurn(e) {
-    console.log('turn')
     if(winner !== undefined){
       return
     }
@@ -97,11 +96,12 @@ class App extends React.Component {
         : null}
         {this.state.gameBoard 
           ? <div className='game-boards'>
-          <div className='boards'>
-              <Board board={this.state.board1}/>
-              <Board board={this.state.board2} player={'cpu'} takeTurn={this.handleTakeTurn}/>
-          </div>
-              <p className='message'>{this.state.message}</p>
+              <p>Click on your opponents board on the right to fire a shot. If you hit a ship the coordinate will be marked with an 'X' if you miss it will be marked with an 'O'. The winner is the first one to sink all of their opponents ships. Good luck!</p>
+              <div className='boards'>
+                  <Board board={this.state.board1}/>
+                  <Board board={this.state.board2} player={'cpu'} takeTurn={this.handleTakeTurn}/>
+              </div>
+                  <p className='message'>{this.state.message}</p>
             </div>
           : null}
       </div>
