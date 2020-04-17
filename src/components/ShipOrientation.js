@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './ShipOrientation.css'
 
 
 class ShipOrientation extends React.Component {
@@ -38,14 +38,16 @@ class ShipOrientation extends React.Component {
 
   render() {
     return(
-      <div>
-        <h1>ShipOrientation</h1>
-        <table>
-          <tbody>
-          {this.renderShip(this.props.length, this.props.orientation)}
-          </tbody>
-        </table>
-        <button onClick={this.handleChangeOrientation}>Flip</button>
+      <div >
+        <h4>Selected Ship</h4>
+        <div className='selected-ship'>
+          <table>
+            <tbody>
+              {this.renderShip(this.props.length, this.props.orientation)}
+            </tbody>
+          </table>
+          <button onClick={this.handleChangeOrientation}>Flip</button>
+        </div>
       </div>
     )
   }

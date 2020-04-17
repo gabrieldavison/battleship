@@ -24,6 +24,7 @@ function takeTurn(index) {
 function newGame() {
   player1 = new Player();
   player2 = new Player();
+  winner = undefined
 }
 
 function startGame() {

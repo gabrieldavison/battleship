@@ -7,8 +7,13 @@ class SelectShip extends React.Component {
 
   render() {
     return(
-      <div>
-        <h1>SelectShip</h1>
+      <div className='select-ship'>
+        <h3>Ships</h3>
+        <ShipOrientation 
+          length={this.props.length} 
+          orientation={this.props.orientation} 
+          changeOrientation={this.props.changeOrientation}
+        />
         <ShipDisplay 
           changeLength={this.props.changeLength} 
           boat5Placed={this.props.boat5Placed}
@@ -17,11 +22,7 @@ class SelectShip extends React.Component {
           boat3Placed2={this.props.boat3Placed2}
           boat2Placed={this.props.boat2Placed}
         />
-        <ShipOrientation 
-          length={this.props.length} 
-          orientation={this.props.orientation} 
-          changeOrientation={this.props.changeOrientation}
-        />
+      
       </div>
     )
   }

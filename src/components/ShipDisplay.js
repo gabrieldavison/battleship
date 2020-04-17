@@ -18,11 +18,13 @@ class ShipDisplay extends React.Component {
   
   render() {
     return(
-      <div>
-        <h1>ShipDisplay</h1>
-        <table className='shipDisplay'>
+      <div className='ship-display'>
+
+        <table >
           <tbody>
+          
             <tr onClick={this.handleChangeLength} data-length='5' className={this.props.boat5Placed} >
+              <th>Carrier</th>
               <td ></td>
               <td ></td>
               <td ></td>
@@ -30,22 +32,26 @@ class ShipDisplay extends React.Component {
               <td ></td>
             </tr>
             <tr className={this.props.boat4Placed} onClick={this.handleChangeLength} data-length='4'>
+              <th>Battleship</th>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr className={this.props.boat3Placed1} onClick={this.handleChangeLength} data-length='3'>
+              <th>Cruiser</th>
               <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr className={this.props.boat3Placed2} onClick={this.handleChangeLength} data-length='3'>
+              <th>Submarine</th>
               <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr className={this.props.boat2Placed} onClick={this.handleChangeLength} data-length='2'>
+              <th>Destroyer</th>
               <td></td>
               <td></td>
             </tr>

@@ -4,10 +4,7 @@ table {
 td {
   border: solid;
 }
-td {
-  width: 20px;
-  height: 20px;
-}
+
 
 .ship {
   border-color: red;

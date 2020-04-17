@@ -45,8 +45,8 @@ class SetupBoard extends React.Component {
    }
   render() {
     return(
-      <div>
-        <h1>SetupBoard</h1>
+      <div className='setup-board'>
+        <h3>Grid</h3>
         <table>
           <tbody>
             {this.createTable()}
@@ -54,7 +54,10 @@ class SetupBoard extends React.Component {
         </table>
         <button onClick={this.props.resetBoard}>Reset Board</button>
 
-        {this.startButton() ? <button>Start Game</button>: null}
+        {this.startButton() 
+          ? <button onClick={this.props.startGame}>Start Game</button>
+          : null}
+          <button onClick={this.props.startGame}>Start Game</button>
       </div>
     )
   }

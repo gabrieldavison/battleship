@@ -1,6 +1,9 @@
-.shipDisplay td {
-  background-color: black
+.ship-display td {
+  background-color: black;
+  padding: 10px;
+  margin-top: 5px;
 }
 .placed td {
   background-color: green
 }
+
