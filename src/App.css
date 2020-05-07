@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20px;
+}
+body {
+  width: 75%;
+  margin: auto;
+}
+.new-game {
+  text-align: justify
+}
+
+.btn-new-game {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+button {
+  color: #000000;
+  background: rgb(255, 255, 255);
+  border: 1px black solid;
+  padding: 5px 10px;
+  border-radius: 2px;
+
+  font-size: 15pt;
+  outline: none;
+}
+
+button:hover {
+  border: 1px rgb(0, 0, 0) solid;
+
+  color: #ffffff;
+  background: rgb(0, 0, 0);
+}
+
+button:active {
+  box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+
+.game-boards {
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.boards {
+  display: flex;
+  flex-direction: row;
+}
+.game-boards table {
+  width: 450px;
+  height: 450px;
+  margin: 20px;
+}
+.game-boards td {
+  width: 34px;
+  height: 34px;
+  text-align: center;
+}
+.message {
+  height: 15px;
+}

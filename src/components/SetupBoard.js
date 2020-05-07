@@ -57,7 +57,6 @@ class SetupBoard extends React.Component {
         {this.startButton() 
           ? <button onClick={this.props.startGame}>Start Game</button>
           : null}
-          <button onClick={this.props.startGame}>Start Game</button>
       </div>
     )
   }

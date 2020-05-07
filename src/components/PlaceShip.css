@@ -1,0 +1,44 @@
+.place-ship {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.select-ship, .setup-board {
+  margin: 20px;
+}
+.selected-ship {
+  height: 200px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end
+}
+.selected-ship button {
+  height: 35px
+}
+
+.selected-ship table {
+  margin: auto;
+}
+.setup-board {
+  height:100%;
+  width: 100%;
+}
+.select-ship {
+  height: 100%;
+  width: 100%
+}
+
+.setup-board table {
+  width: 472px;
+  height: 472px;
+}
+
+.place-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
